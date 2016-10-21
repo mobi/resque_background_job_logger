@@ -17,7 +17,7 @@ module ResqueBackgroundJobLogger
       end
 
       def copy_migrations
-        migration_template "create_background_job_logs.rb", "db/migrate/create_background_job_logs.rb"
+        migration_template "20161021143151_create_background_job_logs.rb", "db/migrate/create_background_job_logs.rb"
       end
     end
   end
