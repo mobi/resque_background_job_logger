@@ -20,6 +20,10 @@ Or install it yourself as:
 
     $ gem install resque_background_job_logger
 
+Generate a migration to add the tracking table:
+
+    $ bundle exec rails generate resque_background_job_logger:install
+
 ## Usage
 
 TODO: Write usage instructions here
