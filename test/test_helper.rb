@@ -4,6 +4,7 @@ require 'resque_background_job_logger'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'resque'
+require 'resque-status'
 
 require 'workers'
 
