@@ -21,6 +21,14 @@ class BasicTest < Minitest::Test
     assert_equal args, log.job_arguments
   end
 
+  def test_log_table_stores_start_and_end_times
+    Resque.enqueue(worker_class)
+    log = BackgroundJobLog.last
+    refute log.started_at.nil?, 'started_at was not set'
+    refute log.ended_at.nil?, 'ended_at was not set'
+    refute log.total_time.nil?, 'total_time was not set'
+  end
+
   private ######################################################################
 
   def worker_class
