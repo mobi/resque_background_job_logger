@@ -13,6 +13,13 @@ class BasicTest < Minitest::Test
     assert_equal worker_class.to_s, log.job_class
   end
 
+  def test_log_table_stores_job_completion
+    Resque.enqueue(worker_class)
+    log = BackgroundJobLog.last
+    assert_equal true, log.success
+    assert log.error_message.nil?, 'error_message was set and should not have'
+  end
+
   def test_log_table_stores_arguments
     worker_class.store_arguments
     args = [1, 2]

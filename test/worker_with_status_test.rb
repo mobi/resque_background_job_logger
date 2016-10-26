@@ -18,6 +18,12 @@ class WorkerWithStatusTest < Minitest::Test
     assert_equal worker_class.to_s, log.job_class
   end
 
+  def test_log_table_stores_job_completion
+    worker_class.create
+    log = BackgroundJobLog.last
+    assert_equal true, log.success
+  end
+
   def test_log_table_stores_arguments
     worker_class.store_arguments
     args = {'arg1' => 1, 'arg2' => 2}
